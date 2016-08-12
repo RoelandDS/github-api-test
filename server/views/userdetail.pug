@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+  head
+    title Welcome
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+  body
+    .container.container-fluid
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Users favourite language - #{favoLang}
+        .panel-body
+          table.table.table-striped
+            tr
+              th Language
+              th Usage
+            for val, lang in langs
+              tr
+                td #{lang}
+                td #{val}
+          if list && list.length > 0
+            .panel.panel-default
+              .panel-heading
+                h4 language usage by repository
+              .panel-body
+                for item in list
+                  h4 #{item.arg}
+                  table.table.table-striped
+                    tr
+                      th Language
+                      th Usage
+                    for count, lang in item.body
+                      tr
+                        td #{lang}
+                        td #{count}

@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+  head
+    title Welcome
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+  body
+    .container.container-fluid
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title User list - #{list.length}
+        .panel-body
+          if list && list.length > 0
+            for user in list
+              p
+                img.img-thumbnail(src=user.avatar_url alt=user.login height='50' width='50')
+                a(href='/user/'+user.login)
+                  | #{user.login}
+          else
+            p
+              | No results for this username please try again
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title search for github user
+              .panel-body
+                form(action='/searchUser' method='POST', enctype="application/x-www-form-urlencoded")
+                  fieldset.form-group
+                    label(for='username') Username
+                    input#username.form-control(type='text', name='username', placeholder='Enter username')
+                  input.btn.btn-primary(type='submit', value='Submit')

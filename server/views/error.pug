@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+  head
+    title Welcome
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+  body
+    .container.container-fluid
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Something went wrong
+        .panel-body
+          p
+           | #{message}
